@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora Solar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f8ff;
+    }
+    h1 {
+      color: #007BFF;
+    }
+    label, input {
+      display: block;
+      margin: 10px 0;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calculadora Solar - Consumo de Vatios</h1>
+
+  <label for="potencia">Potencia del dispositivo (W):</label>
+  <input type="number" id="potencia" placeholder="Ej: 100">
+
+  <label for="horas">Horas de uso por día:</label>
+  <input type="number" id="horas" placeholder="Ej: 5">
+
+  <button onclick="calcular()">Calcular Consumo Diario</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    function calcular() {
+      const potencia = parseFloat(document.getElementById('potencia').value);
+      const horas = parseFloat(document.getElementById('horas').value);
+
+      if (isNaN(potencia) || isNaN(horas)) {
+        document.getElementById('resultado').innerText = "Por favor ingresa valores válidos.";
+        return;
+      }
+
+      const consumo = potencia * horas; // vatios-hora por día
+
+      document.getElementById('resultado').innerText =
+        `Consumo diario: ${consumo} Wh (vatios-hora)`;
+    }
+  </script>
+
+</body>
+</html>
